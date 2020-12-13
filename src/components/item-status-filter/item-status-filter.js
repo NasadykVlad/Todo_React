@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './item-status-filter.css';
 
-export default class ItemStatusFilter extends React.Component {
+
+export default class ItemStatusFilter extends Component {
+
   render() {
     return (
       <div className="btn-group">
@@ -14,5 +16,5 @@ export default class ItemStatusFilter extends React.Component {
                 className="btn btn-outline-secondary">Done</button>
       </div>
     );
-  };
+  }
 }

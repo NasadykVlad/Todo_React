@@ -1,36 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './todo-list-item.css';
 
-export default class TodoListItem extends React.Component {
-    
-    state = {
-      done: false,
-      important: false
-    };
+export default class TodoListItem extends Component {
 
-    onlabelClick = () => {
-      this.setState((state) => {
-        return {
-          done: !state.done
-        };
-      });       
+  state = {
+    done: false,
+    important: false
   };
 
-    onMarkImportant = () => {
-      this.setState((state) => {
-        return{
-          important: !state.important
-        };
-      });
+  onLabelClick = () => {
+    this.setState(({done}) => {
+      return {
+        done: !done
+      };
+    });
+  };
+
+  onMarkImportant = () => {
+    this.setState(({important}) => {
+      return {
+        important: !important
+      };
+    });
   };
 
   render() {
-    const { label } = this.props;
+    const { label, onDeleted } = this.props;
     const { done, important } = this.state;
 
-    let classNames = "todo-list-item";
-
+    let classNames = 'todo-list-item';
     if (done) {
       classNames += ' done';
     }
@@ -38,24 +37,24 @@ export default class TodoListItem extends React.Component {
     if (important) {
       classNames += ' important';
     }
-  
+
     return (
       <span className={classNames}>
         <span
           className="todo-list-item-label"
-          onClick = {this.onlabelClick}>
+          onClick={ this.onLabelClick }>
           {label}
         </span>
-  
+
         <button type="button"
                 className="btn btn-outline-success btn-sm float-right"
                 onClick={this.onMarkImportant}>
           <i className="fa fa-exclamation" />
         </button>
-  
+
         <button type="button"
-                onClick = {this.props.onDeleted}
-                className="btn btn-outline-danger btn-sm float-right">
+                className="btn btn-outline-danger btn-sm float-right"
+                onClick={onDeleted}>
           <i className="fa fa-trash-o" />
         </button>
       </span>
