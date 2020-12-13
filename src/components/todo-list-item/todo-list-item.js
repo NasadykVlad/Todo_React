@@ -54,6 +54,7 @@ export default class TodoListItem extends React.Component {
         </button>
   
         <button type="button"
+                onClick = {this.props.onDeleted}
                 className="btn btn-outline-danger btn-sm float-right">
           <i className="fa fa-trash-o" />
         </button>

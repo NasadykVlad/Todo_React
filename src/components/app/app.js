@@ -8,15 +8,32 @@ import ItemStatusFilter from '../item-status-filter/item-status-filter';
 
 import './app.css';
 
-const App = () => {
+export default class App extends React.Component {
+  state = {
+    todoData: [
+      { label: 'Drink Coffee', important: false, id: 1 },
+      { label: 'Make Awesome App', important: true, id: 2 },
+      { label: 'Have a lunch', important: false, id: 3 }
+    ]
+  };
 
-  const todoData = [
-    { label: 'Drink Coffee', important: false, id: 1 },
-    { label: 'Make Awesome App', important: true, id: 2 },
-    { label: 'Have a lunch', important: false, id: 3 }
-  ];
+  deleteItem = (id) => {
+    this.setState(({todoData}) => { 
 
-  return (
+      const idx = todoData.findIndex ((el) => el.id == id);
+
+      const newArray = [
+        ...todoData.slice(0, idx),
+        ...todoData.slice(idx + 1)
+      ];
+      return {
+        todoData: newArray
+      };
+    });
+  };
+
+    render() {
+      return (
     <div className="todo-app">
       <AppHeader toDo={1} done={3} />
       <div className="top-panel d-flex">
@@ -24,9 +41,9 @@ const App = () => {
         <ItemStatusFilter />
       </div>
 
-      <TodoList todos={todoData} />
+      <TodoList todos={this.state.todoData} 
+      onDeleted = {this.deleteItem} />
     </div>
-  );
+    );
+  }
 };
-
-export default App;
