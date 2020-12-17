@@ -9,11 +9,11 @@ export default class ItemStatusFilter extends Component {
     return (
       <div className="btn-group">
         <button type="button"
-                className="btn btn-info">All</button>
+                className="btn btn-info">Всі</button>
         <button type="button"
-                className="btn btn-outline-secondary">Active</button>
+                className="btn btn-outline-secondary">Активні</button>
         <button type="button"
-                className="btn btn-outline-secondary">Done</button>
+                className="btn btn-outline-secondary">Завершені</button>
       </div>
     );
   }

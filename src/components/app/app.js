@@ -78,7 +78,7 @@ export default class App extends Component {
             todoData: newArray
           };
   });
-  console.log('Toggle Done', id)
+  console.log('Toggle Important', id)
 };
 
   onToggleDone = (id) => {

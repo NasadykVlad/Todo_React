@@ -3,10 +3,10 @@
 }
 
 .app-header h1 {
-  flex-grow: 1;
+  flex-grow: 0.7;
 }
 
 .app-header h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgb(0, 0, 0);
 }
